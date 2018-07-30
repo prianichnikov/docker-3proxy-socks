@@ -24,11 +24,14 @@ LABEL maintainer="Maksim Prianichnikov"
 COPY --from=build /usr/local /usr/local
 
 ADD 3proxy.cfg /usr/local/etc/3proxy/3proxy.cfg
-ADD docker-entrypoint.sh /usr/local
+ADD docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 ENV USER=socks
 ENV PASSWORD=
 
 EXPOSE 1080
 
-CMD /bin/sh /usr/local/docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["start"]

@@ -6,7 +6,7 @@ fi
 
 if [ $1 = "start" ] ; then
   if [ -z "$PASSWORD" ] || [ "$PASSWORD" == "" ] ; then
-    export PASSWORD="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')"
+    export PASSWORD="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 15 ; echo '')"
     echo "export PASSWORD="$PASSWORD >> ~/.profile
   fi
 
